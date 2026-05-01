@@ -1,0 +1,14 @@
+data/
+*.zip
+*.tgz
+*.h5
+*.keras
+__pycache__/
+*.pyc
+.env
+bird_data.zip
+data/
+bird_data.zip
+*.tgz
+*.keras
+__pycache__/
