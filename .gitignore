@@ -12,3 +12,6 @@ bird_data.zip
 *.tgz
 *.keras
 __pycache__/
+models/
+.DS_Store
+birds
