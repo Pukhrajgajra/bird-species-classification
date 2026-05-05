@@ -25,24 +25,6 @@ trained on **84,635 images** across **525 species**.
 
 Python · PyTorch · EfficientNetB3 · Flask · OpenCV · scikit-learn · torchvision · NumPy
 
-## Project Structure
-bird_classification/
-├── app.py                ← Flask web app (root level)
-├── src/
-│   ├── model.py          ← EfficientNetB3 architecture
-│   ├── train.py          ← Full training pipeline
-│   ├── evaluate.py       ← Accuracy, F1, confusion matrix
-│   ├── gradcam.py        ← Grad-CAM explainability heatmaps
-│   ├── similarity.py     ← Cosine similarity + t-SNE
-│   └── data_loader.py    ← Data pipeline + augmentation
-├── models/
-│   ├── best_model.pth    ← Trained PyTorch model (85% accuracy)
-│   └── class_names.json  ← 525 species names
-├── templates/
-│   └── index.html        ← Web UI
-├── requirements.txt
-└── README.md
-
 ## How to Run
 
 **1. Install dependencies:**
@@ -64,17 +46,29 @@ python src/train.py
 ## Model Architecture
 
 Input Image (300×300×3)
+
 ↓
+
 EfficientNetB3 Backbone (ImageNet pretrained)
+
 ↓
+
 GlobalAveragePooling
+
 ↓
+
 Dropout(0.5) → Linear(in_features → 1024) → BatchNorm1d → ReLU
+
 ↓
+
 Dropout(0.4) → Linear(1024 → 512) → ReLU
+
 ↓
+
 Dropout(0.3) → Linear(512 → 525)
+
 ↓
+
 Softmax → Top-5 Predictions
 
 ## Training Strategy
@@ -107,9 +101,13 @@ seaborn>=0.12.0
 Upload any bird photo → model returns:
 
 American Robin        92.3%  ████████████████████
+
 Hermit Thrush          4.1%  ████
+
 Swainson's Thrush      1.8%  ██
+
 Wood Thrush            1.2%  █
+
 Veery                  0.6%  █
 
 Plus a Grad-CAM heatmap showing which features the model used.
